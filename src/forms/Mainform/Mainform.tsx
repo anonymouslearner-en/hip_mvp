@@ -4,12 +4,20 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 interface MainformProps {
   currentStep: number;
   onStepChange: (step: number) => void;
+  onConsultationStepChange: (step: number) => void;
 }
 
-export const Mainform = ({ currentStep, onStepChange }: MainformProps) => {
+export function Mainform({
+  currentStep,
+  onStepChange,
+  onConsultationStepChange,
+}: MainformProps) {
   const handleNext = () => {
     if (currentStep < 4) {
       onStepChange(currentStep + 1);
+    } else {
+      // When all form steps are complete, move to next consultation step
+      onConsultationStepChange(2);
     }
   };
 
@@ -87,4 +95,4 @@ export const Mainform = ({ currentStep, onStepChange }: MainformProps) => {
       </div>
     </div>
   );
-};
+}

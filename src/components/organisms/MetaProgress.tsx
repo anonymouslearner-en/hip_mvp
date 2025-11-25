@@ -17,9 +17,6 @@ export default function MetaProgress({
 }: Props) {
   return (
     <div className="space-y-2">
-      <h3 className="font-semibold text-sm mb-4 text-foreground">
-        Beratungsprozess
-      </h3>
       {steps.map((step) => {
         const isActive = currentStep === step.id;
         const isCompleted = currentStep > step.id;
