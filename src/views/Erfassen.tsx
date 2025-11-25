@@ -5,7 +5,7 @@ import { Page } from "@/components/layout/Page";
 import MetaProgress from "@/components/organisms/MetaProgress";
 import FormStepper from "@/components/organisms/FormStepper";
 import { Mainform } from "@/forms/Mainform/Mainform";
-import { consultationSteps } from "@/App";
+import { consultationSteps } from "@/lib/constants";
 import { HelperLane } from "@/components/organisms/HelperLane";
 
 const buildingFormSteps = [
@@ -30,7 +30,7 @@ export const Erfassen = () => {
     <Page layoutType="default" header={<Navbar />}>
       <div className="grid grid-cols-[15%_60%_25%] gap-6 mx-auto max-w-[1080px] px-4 pt-8">
         <aside className="bg-muted/30 p-4 rounded-lg">
-          <ConsultationProgress steps={consultationSteps} />
+          <MetaProgress steps={consultationSteps} />
         </aside>
 
         <main className="space-y-6">

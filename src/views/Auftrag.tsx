@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Page } from "@/components/layout/Page";
 import MetaProgress from "@/components/organisms/MetaProgress";
-import { consultationSteps } from "@/App";
+import { consultationSteps } from "@/lib/constants";
 import { HelperLane } from "@/components/organisms/HelperLane";
 
 export const Auftrag = () => {
