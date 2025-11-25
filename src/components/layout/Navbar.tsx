@@ -8,7 +8,7 @@ export const Navbar = () => {
       />
       <b className="h-10 w-0.5 bg-neutral-500" />
       <img src="" alt="" />
-      <p className="text-base font-semibold">HIP WiSe 2025 - 2026</p>
+      <p className="text-xl font-semibold">HIP WiSe 2025 - 2026</p>
       <p className="text-sm font-light">Gruppe 11</p>
     </nav>
   );
