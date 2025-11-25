@@ -9,9 +9,11 @@ import "./App.css";
 import { Beratung } from "./views/Beratung";
 import { Auftrag } from "./views/Auftrag";
 
+// const basename = import.meta.env.MODE === "production" ? "/hip_mvp" : "";
+
 export const App = () => {
   return (
-    <Router>
+    <Router basename="/hip_mvp">
       <Routes>
         <Route path="/" element={<Navigate to="/erfassen" replace />} />
         <Route path="/erfassen" element={<Erfassen />} />
