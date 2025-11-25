@@ -1,6 +1,14 @@
 import { useState } from "react";
-import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { Erfassen } from "./views/Erfassen";
+import "./App.css";
+import { Beratung } from "./views/Beratung";
+import { Auftrag } from "./views/Auftrag";
 
 export const consultationSteps = [
   { id: 1, title: "Erfassung", description: "Gebäudedaten erfassen" },
@@ -13,15 +21,15 @@ export const consultationSteps = [
 ];
 
 export const App = () => {
-  const [currentConsultationStep, setCurrentConsultationStep] = useState(1);
-
   return (
-    <>
-      <Erfassen
-        consultationStep={currentConsultationStep}
-        onConsultationStepChange={setCurrentConsultationStep}
-      />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to="/erfassen" replace />} />
+        <Route path="/erfassen" element={<Erfassen />} />
+        <Route path="/beratung" element={<Beratung />} />
+        <Route path="/auftrag" element={<Auftrag />} />
+      </Routes>
+    </Router>
   );
 };
 

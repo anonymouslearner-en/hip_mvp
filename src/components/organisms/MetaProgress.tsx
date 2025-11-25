@@ -1,30 +1,34 @@
-interface Step {
-  id: number;
-  title: string;
-  description: string;
-}
+import { useNavigate, useLocation } from "react-router-dom";
 
 interface Props {
-  currentStep: number;
-  steps: Step[];
-  onStepChange: (step: number) => void;
+  steps: Array<{ step: number; title: string; path: string }>;
 }
 
-export default function MetaProgress({
-  currentStep,
-  steps,
-  onStepChange,
-}: Props) {
+export const MetaProgress = ({ steps }: Props) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Determine current step from URL
+  const currentStep =
+    steps.find((s) => s.path === location.pathname)?.step || 1;
+
+  const handleStepChange = (step: number) => {
+    const targetStep = steps.find((s) => s.step === step);
+    if (targetStep) {
+      navigate(targetStep.path);
+    }
+  };
+
   return (
     <div className="space-y-2">
       {steps.map((step) => {
-        const isActive = currentStep === step.id;
-        const isCompleted = currentStep > step.id;
+        const isActive = currentStep === step.step;
+        const isCompleted = currentStep > step.step;
 
         return (
           <button
-            key={step.id}
-            onClick={() => onStepChange(step.id)}
+            key={step.step}
+            onClick={() => handleStepChange(step.step)}
             className={`w-full text-left p-3 rounded-lg transition-all duration-200 ${
               isActive ? "bg-primary/5" : "hover:bg-muted/50"
             }`}
@@ -39,7 +43,7 @@ export default function MetaProgress({
                     : "bg-muted text-muted-foreground"
                 }`}
               >
-                {isCompleted ? "✓" : step.id}
+                {isCompleted ? "✓" : step.step}
               </div>
               <div className="flex-1">
                 <p
@@ -51,9 +55,6 @@ export default function MetaProgress({
                 >
                   {step.title}
                 </p>
-                <p className="text-xs text-muted-foreground mt-0.5">
-                  {step.description}
-                </p>
               </div>
             </div>
           </button>
@@ -61,4 +62,6 @@ export default function MetaProgress({
       })}
     </div>
   );
-}
+};
+
+export default MetaProgress;
