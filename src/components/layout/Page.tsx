@@ -16,7 +16,7 @@ interface Props {
 export const Page = ({
   children,
   layoutType = "default",
-  title = "HIP MVP",
+  title = "HIP | Gruppe 11 MVP",
   description = "",
   keywords = "",
   header,
@@ -70,7 +70,11 @@ export const Page = ({
       case "fullscreen":
         return (
           <div className={layoutClasses.fullscreen}>
-            {header && <header>{header}</header>}
+            {header && (
+              <header className="sticky top-0 w-full min-h-16 shadow-md! bg-neutral-100 z-10">
+                {header}
+              </header>
+            )}
             <main className="h-full">{children}</main>
             {footer && <footer>{footer}</footer>}
           </div>

@@ -7,7 +7,7 @@ export const Navbar = () => {
         alt="TH Koeln Logo"
       />
       <b className="h-10 w-0.5 bg-neutral-300" />
-      <img src="" alt="" />
+      {/* <img src="" alt="" /> */}
       <p className="text-xl font-semibold">HIP WiSe 2025 - 2026</p>
       <p className="text-sm font-light">Gruppe 11</p>
     </nav>
